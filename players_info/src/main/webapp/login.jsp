@@ -9,6 +9,7 @@
 <body>
 <div> Enter details of cricket player</div>
 <form method="post" action="logincheck">
+
 		<table>
 			<tr>
 				<td>Enter player code</td>

@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,12 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class logincheck
  */
-class Player{
-	int plcode;
-	String plname;
-	int plrun;
-	int plnotout;
-}
 
 
 @WebServlet("/logincheck")
@@ -42,20 +35,40 @@ public class logincheck extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String plcode =request.getParameter("plcode");
 		String plname=request.getParameter("plname");
 		String plrun =request.getParameter("plrun");
 		String plnotout=request.getParameter("plnotout");
 		
-		Player p1 =new Player();
 		
+		Plcode p = () -> 
+			
+			System.out.println("player code   " + plcode);
+		;
 		
-		System.out.println("player code   " + plcode);
-		System.out.println("player name   " +plname);
-		System.out.println("player runs  " + plrun);
-		System.out.println("player not outs   " +plnotout);
+		Plname pl = () -> 
+			
+			System.out.println("player name  " + plname);
+		;
+	
+		Plrun pr = () -> 
 		
-	    request.getSession().setAttribute("plcode", plcode);
+		    System.out.println("player runs  " + plrun);
+	    ;
+     
+        PlNotOut pn = () -> 
+		
+		    System.out.println("player not outs   " + plnotout);
+     	;
+  
+  p.sayPl();
+  pl.sayPL();
+  pr.sayPLrun();
+  pn.sayPlnotout();
+
+        request.getSession().setAttribute("plcode", plcode);
 	    request.getSession().setAttribute("plname",plname);
 	    request.getSession().setAttribute("plrun", plrun);
 	    request.getSession().setAttribute("plnotout",plnotout);
